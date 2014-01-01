@@ -6,6 +6,10 @@ CXXFLAGS=-Wall -O2
 
 SOURCES= \
  CircularArray.cpp \
+ Sliding.cpp \
+ SenderSlidingWindow.cpp \
+ ReceiverSlidingWindow.cpp \
+ RandomNumber.cpp \
  sim.cpp
 
 OBJECTS=$(SOURCES:.cpp=.o)

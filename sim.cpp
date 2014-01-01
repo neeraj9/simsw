@@ -13,13 +13,20 @@
 #define debug 1      /* comment it for the graphics */
 
 #include "sliding.h"
+#include "SenderSlidingWindow.h"
+#include "ReceiverSlidingWindow.h"
 #ifndef debug
  #include "window.h"
  #include "packet.h"
 #endif
 
 
+using namespace std;
 using namespace SimSw;
+
+
+const char *stat_chr[]={"OK ","COR","DES","ERR"};
+
 
 void printHelp(void)
 {
@@ -36,7 +43,7 @@ void printHelp(void)
 
 
 
-void sSimPacket(sSlidingWindow swin,ofstream &fout)
+void sSimPacket(SenderSlidingWindow swin,ofstream &fout)
 {
   char swindow[50];
 // char s1[40], s3[46];
@@ -48,7 +55,7 @@ void sSimPacket(sSlidingWindow swin,ofstream &fout)
 //	cout << endl;
 }
 
-void rSimPacket(rSlidingWindow rwin, ofstream &fout)
+void rSimPacket(ReceiverSlidingWindow rwin, ofstream &fout)
 {
   char rwindow[50];
 // char s1[40], s3[46];
@@ -81,17 +88,17 @@ int main(int argc, char *argv[])
 {
   float pe;
   int maxNum, bits;
-  rSlidingWindow rwin;
-  sSlidingWindow swin;
-  pktStatus pkt;
+  ReceiverSlidingWindow rwin;
+  SenderSlidingWindow swin;
+  Sliding::pktStatus pkt;
   int pnum, anum;
   int timeOut;
   int result,i;
   int ack_flag;
   char ch;
-  rNumber rnum;
+  RandomNumber rnum;
   ofstream fout;
-  pktStatus ackStat;
+  Sliding::pktStatus ackStat;
   char s1[50],s2[50],s3[50];
 #ifndef debug
   Window senderWin, receiverWin;
@@ -163,8 +170,8 @@ int main(int argc, char *argv[])
 #endif
           fout << " received ack #" << anum << " status = ";
           fout << stat_chr[ackStat]<<endl;
-          if (ackStat == OK)
-            result = swin.receive(anum,ACK);
+          if (ackStat == Sliding::OK)
+            result = swin.receive(anum,Sliding::ACK);
 /*	  cout <<"  result =" << result<< endl;
     fout <<"  result =" << result<< endl;
  */
@@ -215,7 +222,7 @@ int main(int argc, char *argv[])
 //	 sleep(1);
 //	 if (rnum.get_rand() >= 0.5)
       if (pnum != ERROR && pnum != CONNECTION_LOST) {
-          if (pkt == OK)
+          if (pkt == Sliding::OK)
             result = rwin.receive(pnum,fout);
 #ifdef debug
           cout << " received data pkt# "<< pnum << " status = ";
@@ -224,8 +231,8 @@ int main(int argc, char *argv[])
           fout << " received data pkt# "<< pnum << " status = ";
           fout << stat_chr[pkt] << endl;
         }
-      if ((pkt == CANNOT_SEND) || (pkt == DESTROYED)) {
-          anum = rwin.pktSend(ACK,ackStat); // ackStat is status of ack
+      if ((pkt == Sliding::CANNOT_SEND) || (pkt == Sliding::DESTROYED)) {
+          anum = rwin.pktSend(Sliding::ACK,ackStat); // ackStat is status of ack
           if (anum != ERROR) {
               ack_flag = SET;
 #ifdef debug

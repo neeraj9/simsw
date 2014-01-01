@@ -6,25 +6,18 @@
  * copyright (c) 2001 Neeraj Sharma <neeraj.sharma@alumni.iitg.ernet.in>
  */
 
-//     Working Correctly
+#include "RandomNumber.h"
 
+#include <cstdlib>
 
-#ifndef _RNUM_H
-#define _RNUM_H 1
+using namespace SimSw;
 
-#include <stdlib.h>
-
-class rNumber {
-unsigned int rnum; // stores the current random value
-public:
-rNumber() {
+RandomNumber::RandomNumber() {
   rnum = 1; srand(rnum);
 }
-float get_rand();   // returns number between 0 and 1
-};
 
-float rNumber::get_rand()
-{
+float
+RandomNumber::get_rand() {
   float p;
   srand(rnum);
   rnum = rand();
@@ -32,6 +25,3 @@ float rNumber::get_rand()
 
   return p;
 }
-
-
-#endif
