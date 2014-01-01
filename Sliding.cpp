@@ -1,4 +1,4 @@
-#include "sliding.h"
+#include "Sliding.h"
 
 using namespace SimSw;
 

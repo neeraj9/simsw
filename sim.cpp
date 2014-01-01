@@ -12,7 +12,7 @@
 
 #define debug 1      /* comment it for the graphics */
 
-#include "sliding.h"
+#include "Sliding.h"
 #include "SenderSlidingWindow.h"
 #include "ReceiverSlidingWindow.h"
 #ifndef debug

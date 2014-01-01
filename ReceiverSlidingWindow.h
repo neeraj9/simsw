@@ -16,7 +16,7 @@
 #include <fstream>
 #include "CircularArray.h"
 #include "consts.h"
-#include "sliding.h"
+#include "Sliding.h"
 
 namespace SimSw {
 
