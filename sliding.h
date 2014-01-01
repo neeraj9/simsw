@@ -62,7 +62,7 @@ int timeOut_flag;    // TRUE if time out
 int retransmit_flag; // TRUE if retransmiting
 int pktNumber;  // for keeping track of packet
   // number during retransmission.
-circularArray wArray; // window array
+CircularArray wArray; // window array
 rNumber rand_num;
 int send(void); // send data
 
@@ -456,7 +456,7 @@ int wSize; // Max Window size
 int cSize; // Current Window size
 int max_num; // max. number in the numbering scheme
 int pktSize; // in bits
-circularArray wArray; // window array
+CircularArray wArray; // window array
 rNumber rand_num;
 int sIndex;
 int buffer[MAXWINSIZE]; // buffer for out of order packets

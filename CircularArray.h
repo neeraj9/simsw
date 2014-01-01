@@ -12,13 +12,13 @@
 #include "consts.h"
 
 
-class circularArray {
+class CircularArray {
 int start,end;
   //	int *buffer;
 int max_size;
 public:
-circularArray(int size=0);
-  // ~circularArray() { if (max_size!=0) delete[] buffer; }
+CircularArray(int size=0);
+  // ~CircularArray() { if (max_size!=0) delete[] buffer; }
 void set_size(int size, int s, int e);
 int length(void);
 int remove(int nos);
@@ -32,7 +32,7 @@ int get_end(void)   {
 int is_empty(void);
 };
 
-circularArray::circularArray(int size)
+CircularArray::CircularArray(int size)
 {
 // buffer = NULL;  no need to store anything
   start = end = -1;
@@ -46,7 +46,7 @@ circularArray::circularArray(int size)
 }
 
 
-void circularArray::set_size(int size, int s, int e)
+void CircularArray::set_size(int size, int s, int e)
 {
 
   max_size = size;
@@ -55,13 +55,13 @@ void circularArray::set_size(int size, int s, int e)
 }
 
 
-int circularArray::is_empty(void)
+int CircularArray::is_empty(void)
 {
   return ( (start==-1) || (end == -1 ) );
 }
 
 
-int circularArray::length(void)
+int CircularArray::length(void)
 {
   int len=0;
 
@@ -75,7 +75,7 @@ int circularArray::length(void)
 }
 
 // can remove all the elmts.
-int circularArray::remove(int nos)
+int CircularArray::remove(int nos)
 {
   if (is_empty() || (length() < nos) )
     return ERROR;
@@ -86,7 +86,7 @@ int circularArray::remove(int nos)
   return DONE;
 }
 
-int circularArray::insert(int nos)
+int CircularArray::insert(int nos)
 {
   if (is_empty()) {
       if (nos > max_size)
