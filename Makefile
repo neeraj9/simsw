@@ -27,3 +27,6 @@ format-code:
 
 .cpp.o:
 	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+clean:
+	rm -f *.o
