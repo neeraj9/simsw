@@ -6,9 +6,9 @@
  * copyright (c) 2001 Neeraj Sharma <neeraj.sharma@alumni.iitg.ernet.in>
  */
 
-#include <iostream.h>
-#include <fstream.h>
-#include <string.h>
+#include <iostream>
+#include <fstream>
+#include <string>
 
 #define debug 1      /* comment it for the graphics */
 
@@ -18,6 +18,8 @@
  #include "packet.h"
 #endif
 
+
+using namespace SimSw;
 
 void printHelp(void)
 {

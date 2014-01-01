@@ -9,15 +9,17 @@
 #ifndef SLIDING_WN_H
 #define SLIDING_WN_H  1
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#include <iostream.h>
-#include <fstream.h>
-#include "circarr.h"
+#include <cstdio>
+#include <cstdlib>
+#include <cmath>
+#include <iostream>
+#include <fstream>
+#include "CircularArray.h"
 #include "consts.h"
 #include "rnum.h"
 
+using namespace std;
+using namespace SimSw;
 
 typedef unsigned int uint;
 
